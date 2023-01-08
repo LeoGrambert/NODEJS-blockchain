@@ -1,11 +1,13 @@
 const CryptoBlock = require("./CryptoBlock");
+const { msToSec } = require("../helpers/convert");
 
 class CryptoBlockchain {
-  constructor() {
-    this.blockchain = [this.startGenesisBlock()];
+  constructor(difficulty) {
+    this.blockchain = [this.createFirstBlock()];
+    this.difficulty = parseInt(difficulty);
   }
 
-  startGenesisBlock() {
+  createFirstBlock() {
     return new CryptoBlock(0, "08/01/2023", "Initial Block in the Chain");
   }
 
@@ -15,8 +17,9 @@ class CryptoBlockchain {
 
   addNewBlock(newBlock) {
     newBlock.precedingHash = this.obtainLatestBlock().hash;
-    newBlock.hash = newBlock.computeHash();
+    const miningTime = newBlock.proofOfWork(this.difficulty);
     if (this.checkChainValidity()) {
+      newBlock["miningTime"] = msToSec(miningTime);
       this.blockchain.push(newBlock);
     } else {
       console.error("Problem detected in chain validity...");

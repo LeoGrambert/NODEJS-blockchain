@@ -1,7 +1,11 @@
 const CryptoBlock = require("./src/classes/CryptoBlock");
 const CryptoBlockchain = require("./src/classes/CryptoBlockchain");
 
-let myBlockchain = new CryptoBlockchain();
+const DIFFICULTY_LEVEL = 4;
+
+const myBlockchain = new CryptoBlockchain(DIFFICULTY_LEVEL);
+
+console.log("Mining in progress...");
 
 myBlockchain.addNewBlock(
   new CryptoBlock(1, "09/01/2023", {
@@ -16,6 +20,14 @@ myBlockchain.addNewBlock(
     sender: "Mike",
     recipient: "Elsa",
     value: 100,
+  })
+);
+
+myBlockchain.addNewBlock(
+  new CryptoBlock(3, "11/01/2023", {
+    sender: "Elsa",
+    recipient: "John",
+    value: 75,
   })
 );
 
