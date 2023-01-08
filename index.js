@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 const CryptoBlock = require("./src/classes/CryptoBlock");
 const CryptoBlockchain = require("./src/classes/CryptoBlockchain");
 
