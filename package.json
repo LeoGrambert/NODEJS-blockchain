@@ -1,0 +1,44 @@
+{
+  "name": "nodejs-blockchain",
+  "version": "1.0.0",
+  "description": "POC blockchain with Node.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "lint": "eslint \"src/**\"",
+    "prettier:base": "prettier --parser javascript --single-quote",
+    "prettier:check": "npm run prettier:base -- --list-different \"src/**/*.{js}\"",
+    "prettier:write": "npm run prettier:base -- --write \"src/**/*.{js}\"",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeoGrambert/NODEJS-blockchain.git"
+  },
+  "keywords": [
+    "blockchain",
+    "web3",
+    "nodejs",
+    "javascript"
+  ],
+  "author": "leogrambert@protonmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LeoGrambert/NODEJS-blockchain/issues"
+  },
+  "homepage": "https://github.com/LeoGrambert/NODEJS-blockchain#readme",
+  "devDependencies": {
+    "eslint": "^8.0.1",
+    "eslint-plugin-import": "^2.23.4",
+    "husky": "^7.0.1",
+    "lint-staged": "^12.3.2",
+    "prettier": "^2.3.2"
+  },
+  "lint-staged": {
+    "*.{js}": "eslint --cache --fix",
+    "*.{js,md}": "prettier --write"
+  },
+  "dependencies": {
+    "crypto-js": "^4.1.1"
+  }
+}
